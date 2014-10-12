@@ -13,6 +13,8 @@
 		180109C319E72D1F00693D54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 180109C219E72D1F00693D54 /* Images.xcassets */; };
 		180109C619E72D1F00693D54 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 180109C419E72D1F00693D54 /* LaunchScreen.xib */; };
 		180109D219E72D1F00693D54 /* DynamicCellsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180109D119E72D1F00693D54 /* DynamicCellsTests.swift */; };
+		1816394219EA04C100FAAD97 /* UIView+DynamicCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1816394119EA04C100FAAD97 /* UIView+DynamicCells.swift */; };
+		18CCE16C19E79B3200BEE998 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CCE16B19E79B3200BEE998 /* CollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		180109CB19E72D1F00693D54 /* DynamicCellsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicCellsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		180109D019E72D1F00693D54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		180109D119E72D1F00693D54 /* DynamicCellsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCellsTests.swift; sourceTree = "<group>"; };
+		1816394119EA04C100FAAD97 /* UIView+DynamicCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+DynamicCells.swift"; sourceTree = "<group>"; };
+		18CCE16B19E79B3200BEE998 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				180109C219E72D1F00693D54 /* Images.xcassets */,
 				180109C419E72D1F00693D54 /* LaunchScreen.xib */,
 				180109B919E72D1F00693D54 /* Supporting Files */,
+				18CCE16B19E79B3200BEE998 /* CollectionViewController.swift */,
+				1816394119EA04C100FAAD97 /* UIView+DynamicCells.swift */,
 			);
 			path = DynamicCells;
 			sourceTree = "<group>";
@@ -212,7 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1816394219EA04C100FAAD97 /* UIView+DynamicCells.swift in Sources */,
 				180109BE19E72D1F00693D54 /* ViewController.swift in Sources */,
+				18CCE16C19E79B3200BEE998 /* CollectionViewController.swift in Sources */,
 				180109BC19E72D1F00693D54 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = DynamicCells/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -349,6 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = DynamicCells/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
