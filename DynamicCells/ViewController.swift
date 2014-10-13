@@ -60,8 +60,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var h:CGFloat = 44
         if (indexPath.section == 0) {
             if let template = self.labelTemplateCell {
-                let text = self.data[indexPath.row]
-                template.label.text = text
+                let text = NSAttributedString(string: self.data[indexPath.row])
+                template.label.attributedText = text
                 //template.layoutIfNeeded()
     //            var frame = template.label.frame
     //            let sz = template.label.contentSize
@@ -79,8 +79,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         else {
             if let template = self.textViewTemplateCell {
-                let text = self.data[indexPath.row]
-                template.textView.text = text
+                let text = NSAttributedString(string: self.data[indexPath.row])
+                template.textView.attributedText = text
                 let size = template.contentView.jbw_systemLayoutSizeFittingSize(CGSize(width: self.view.frame.size.width, height: h))
                 h = size.height + 5
             }
@@ -101,12 +101,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if (indexPath.section == 0) {
             let cell = tableView.dequeueReusableCellWithIdentifier("labelCell", forIndexPath: indexPath) as LabelCell
-            cell.label.text = self.data[indexPath.row]
+            let text = NSAttributedString(string: self.data[indexPath.row])
+            cell.label.attributedText = text
+
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("textViewCell", forIndexPath: indexPath) as TextViewCell
-            cell.textView.text = self.data[indexPath.row]
+            let text = NSAttributedString(string: self.data[indexPath.row])
+            cell.textView.attributedText = text
+
             return cell
         }
     }
