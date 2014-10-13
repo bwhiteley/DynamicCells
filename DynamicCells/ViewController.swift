@@ -40,14 +40,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let frame = self.view.frame
         self.labelTemplateCell = self.tableView.dequeueReusableCellWithIdentifier("labelCell") as? LabelCell
         self.textViewTemplateCell = self.tableView.dequeueReusableCellWithIdentifier("textViewCell") as? TextViewCell
-        if let contentView = self.textViewTemplateCell?.contentView {
-            let constraint = NSLayoutConstraint(item: contentView, attribute:.Width, relatedBy:.Equal, toItem: nil, attribute:.NotAnAttribute, multiplier: 1, constant: self.view.frame.size.width)
-            contentView.addConstraint(constraint)
-        }
-        if let contentView = self.labelTemplateCell?.contentView {
-            let constraint = NSLayoutConstraint(item: contentView, attribute:.Width, relatedBy:.Equal, toItem: nil, attribute:.NotAnAttribute, multiplier: 1, constant: self.view.frame.size.width)
-            contentView.addConstraint(constraint)
-        }
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.title = "TableView"
@@ -76,12 +68,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //            frame = CGRect(x: frame.origin.x, y: frame.origin.y, width: frame.size.width, height: sz.height)
     //            template.label.frame = frame
                 //h = template.systemLayoutSizeFittingSize(CGSize(width: self.view.frame.size.width, height: 70)).height
-                println("label intrinsic: \(template.label.intrinsicContentSize())")
-                let size = template.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-                println("template vert constraints: \(template.label.constraintsAffectingLayoutForAxis(.Vertical) )")
-                println("template constraints: \(template.contentView.constraints())")
-                println("fitting size: \(size)")
-                println("template autoconstraints: \(template.label.translatesAutoresizingMaskIntoConstraints())")
+//                println("label intrinsic: \(template.label.intrinsicContentSize())")
+//                let size = template.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+//                println("template vert constraints: \(template.label.constraintsAffectingLayoutForAxis(.Vertical) )")
+//                println("template constraints: \(template.contentView.constraints())")
+//                println("fitting size: \(size)")
+//                println("template autoconstraints: \(template.label.translatesAutoresizingMaskIntoConstraints())")
                 h = template.contentView.jbw_systemLayoutSizeFittingSize(CGSize(width: self.view.frame.size.width, height: h)).height + 5
             }
         }

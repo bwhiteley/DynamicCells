@@ -49,14 +49,6 @@ class CollectionViewController: UICollectionViewController {
 
         self.labelTemplate = self.collectionView?.dequeueReusableCellWithReuseIdentifier(labelReuseIdentifier, forIndexPath: nil) as? LabelCCell
         self.textViewTemplate = self.collectionView?.dequeueReusableCellWithReuseIdentifier(textViewReuseIdentifier, forIndexPath: nil) as? TextViewCCell
-        if let contentView = self.textViewTemplate?.contentView {
-            let constraint = NSLayoutConstraint(item: contentView, attribute:.Width, relatedBy:.Equal, toItem: nil, attribute:.NotAnAttribute, multiplier: 1, constant: self.view.frame.size.width)
-            contentView.addConstraint(constraint)
-        }
-        if let contentView = self.labelTemplate?.contentView {
-            let constraint = NSLayoutConstraint(item: contentView, attribute:.Width, relatedBy:.Equal, toItem: nil, attribute:.NotAnAttribute, multiplier: 1, constant: self.view.frame.size.width)
-            contentView.addConstraint(constraint)
-        }
 
         self.title = "CollectionView"
 
@@ -122,12 +114,14 @@ class CollectionViewController: UICollectionViewController {
             if let template = self.labelTemplate {
                 template.label.text = self.data[indexPath.row]
                 sz.height = template.contentView.jbw_systemLayoutSizeFittingSize(sz).height
+                //println("template vert constraints: \(template.constraintsAffectingLayoutForAxis(.Vertical) )")
             }
         }
         else {
             if let template = self.textViewTemplate {
                 template.textView.text = self.data[indexPath.row]
                 sz.height = template.contentView.jbw_systemLayoutSizeFittingSize(sz).height + 5
+                //println("template vert constraints: \(template.constraintsAffectingLayoutForAxis(.Vertical) )")
             }
         }
         
