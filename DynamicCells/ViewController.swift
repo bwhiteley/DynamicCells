@@ -30,7 +30,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
 
     required init(coder aDecoder: NSCoder) {
-        self.data = ["foo", "bar", "fish\nbang", "mary\nhad\na\nlittle\nlamb", "http://slashdot.org"]
+        self.data = ["foo", "bar", "foo\nbar", "mary\nhad\na\nlittle\nlamb", "http://slashdot.org"]
         self.data += ["Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."]
         super.init(coder: aDecoder)
     }
@@ -74,14 +74,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //                println("template constraints: \(template.contentView.constraints())")
 //                println("fitting size: \(size)")
 //                println("template autoconstraints: \(template.label.translatesAutoresizingMaskIntoConstraints())")
-                h = template.contentView.jbw_systemLayoutSizeFittingSize(CGSize(width: self.view.frame.size.width, height: h)).height + 5
+                let hp:UILayoutPriority = 1000 // linker errors if we use the symbolic name UILayoutPriorityRequired
+                let vp:UILayoutPriority = 50  // linker errors if we use the symbolic name UILayoutPriorityFittingSizeLevel
+                h = template.contentView.jbw_systemLayoutSizeFittingSize(CGSize(width: self.view.frame.size.width, height: h), withHorizontalFittingPriority: hp, verticalFittingPriority: vp).height + 5
             }
         }
         else {
             if let template = self.textViewTemplateCell {
                 let text = NSAttributedString(string: self.data[indexPath.row])
                 template.textView.attributedText = text
-                let size = template.contentView.jbw_systemLayoutSizeFittingSize(CGSize(width: self.view.frame.size.width, height: h))
+                let hp:UILayoutPriority = 1000 // linker errors if we use the symbolic name UILayoutPriorityRequired
+                let vp:UILayoutPriority = 50  // linker errors if we use the symbolic name UILayoutPriorityFittingSizeLevel
+                let size = template.contentView.jbw_systemLayoutSizeFittingSize(CGSize(width: self.view.frame.size.width, height: h), withHorizontalFittingPriority: hp, verticalFittingPriority: vp)
                 h = size.height + 5
             }
         }

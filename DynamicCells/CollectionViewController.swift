@@ -38,7 +38,7 @@ class CollectionViewController: UICollectionViewController {
     var textViewTemplate:TextViewCCell?
     
     required init(coder aDecoder: NSCoder) {
-        self.data = ["foo", "bar", "fishy\nbang", "mary\nhad\na\nlittle\nlamb", "http://slashdot.org"]
+        self.data = ["foo", "bar", "foo\nbar", "mary\nhad\na\nlittle\nlamb", "http://slashdot.org"]
         self.data += ["Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."]
   super.init(coder: aDecoder)
     }
@@ -108,19 +108,23 @@ class CollectionViewController: UICollectionViewController {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         
-        var sz = CGSize(width: self.view.frame.size.width, height: 90)
+        var sz = CGSize(width: self.view.frame.size.width, height: 50)
         
         if (indexPath.section == 0) {
             if let template = self.labelTemplate {
                 template.label.text = self.data[indexPath.row]
-                sz.height = template.contentView.jbw_systemLayoutSizeFittingSize(sz).height
+                let hp:UILayoutPriority = 1000 // linker errors if we use the symbolic name UILayoutPriorityRequired
+                let vp:UILayoutPriority = 50  // linker errors if we use the symbolic name UILayoutPriorityFittingSizeLevel
+                sz.height = template.contentView.jbw_systemLayoutSizeFittingSize(sz, withHorizontalFittingPriority: hp, verticalFittingPriority: vp).height
                 //println("template vert constraints: \(template.constraintsAffectingLayoutForAxis(.Vertical) )")
             }
         }
         else {
             if let template = self.textViewTemplate {
                 template.textView.text = self.data[indexPath.row]
-                sz.height = template.contentView.jbw_systemLayoutSizeFittingSize(sz).height + 5
+                let hp:UILayoutPriority = 1000 // linker errors if we use the symbolic name UILayoutPriorityRequired
+                let vp:UILayoutPriority = 50  // linker errors if we use the symbolic name UILayoutPriorityFittingSizeLevel
+                sz.height = template.contentView.jbw_systemLayoutSizeFittingSize(sz, withHorizontalFittingPriority: hp, verticalFittingPriority: vp).height + 5
                 //println("template vert constraints: \(template.constraintsAffectingLayoutForAxis(.Vertical) )")
             }
         }
