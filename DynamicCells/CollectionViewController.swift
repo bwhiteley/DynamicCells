@@ -47,8 +47,8 @@ class CollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.labelTemplate = self.collectionView?.dequeueReusableCellWithReuseIdentifier(labelReuseIdentifier, forIndexPath: nil) as? LabelCCell
-        self.textViewTemplate = self.collectionView?.dequeueReusableCellWithReuseIdentifier(textViewReuseIdentifier, forIndexPath: nil) as? TextViewCCell
+        self.labelTemplate = self.collectionView.dequeueReusableCellWithReuseIdentifier(labelReuseIdentifier, forIndexPath: nil) as? LabelCCell
+        self.textViewTemplate = self.collectionView.dequeueReusableCellWithReuseIdentifier(textViewReuseIdentifier, forIndexPath: nil) as? TextViewCCell
 
         self.title = "CollectionView"
 
@@ -66,7 +66,7 @@ class CollectionViewController: UICollectionViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.collectionView?.reloadData()
+        self.collectionView.reloadData()
     }
 
     /*
